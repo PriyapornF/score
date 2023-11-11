@@ -7,7 +7,7 @@ import pickle
 def load_model_and_encoders():
     with open('model_student_data.pkl', 'rb') as file:
         model, *encoders = pickle.load(file)
-    return model, encoders
+    return model, *encoders
 
 # Categorical Data Encoding
 def encode_categorical_data(df, encoders):
@@ -29,7 +29,7 @@ def main():
     st.title('Student Performance Form')
 
     # Load model and encoders
-    model, encoders = load_model_and_encoders()
+    model, *encoders = load_model_and_encoders()
 
     # Create a form for students to fill out
     st.subheader('Student Information')

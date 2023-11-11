@@ -14,7 +14,7 @@ def encode_categorical_data(df, encoders):
     categorical_columns = [ 'school', 'sex', 'age', 'address', 'Medu', 'Fedu', 'studytime', 'G1', 'G2', 'absences', 
                            'famsize', 'Pstatus', 'Mjob', 'Fjob', 'reason', 'guardian', 'Dalc', 'Walc', 
                            'activities_yes', 'failures', 'famrel', 'famsup_yes', 'freetime', 'goout', 'health', 'higher_yes',
-                           'internet_yes', 'nursery_yes', 'paid_yes', 'romantic_yes', 'schoolsup_yes'
+                           'internet_yes', 'nursery_yes', 'paid_yes', 'romantic_yes', 'schoolsup_yes', 'traveltime'
                           ]
     for column, encoder in zip(categorical_columns, encoders):
         # Ensure that the column exists in the DataFrame
@@ -69,6 +69,7 @@ def main():
     romantic_yes = st.selectbox('romantic_yes', [0, 1])
     schoolsup_yes = st.selectbox('schoolsup_yes', [0, 1])
     nursery_yes = st.selectbox('nursery_yes', [0, 1])
+    traveltime = st.selectbox('traveltime', [0, 1])
     # ... (similar input fields for other features)
     # ... (similar input fields for other features)
 
@@ -106,7 +107,8 @@ def main():
             'nursery_yes': [nursery_yes], 
             'paid_yes': [paid_yes], 
             'romantic_yes': [romantic_yes], 
-            'schoolsup_yes': [schoolsup_yes]
+            'schoolsup_yes': [schoolsup_yes],
+            'traveltime': [traveltime]
             # ... (similar entries for other features)
         })
 

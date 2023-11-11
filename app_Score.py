@@ -48,8 +48,8 @@ def main():
     Pstatus = st.selectbox('Pstatus', [0, 1])
     Mjob = st.selectbox('Mother job', [0, 1, 2, 3, 4])
     Fjob =  st.selectbox('Father job',[0, 1, 2, 3, 4])
-    reason = st.selectbox('Reason', [[0, 1, 2, 3]])
-    guardian = st.selectbox('Guardian', [[0, 1, 2])
+    reason = st.selectbox('Reason', [0, 1, 2, 3])
+    guardian = st.selectbox('Guardian', [0, 1, 2])
     # ... (similar input fields for other features)
     # ... (similar input fields for other features)
 

@@ -11,7 +11,8 @@ def load_model_and_encoders():
 
 # Categorical Data Encoding
 def encode_categorical_data(df, encoders):
-    categorical_columns = [ 'school', 'sex', 'age', 'address', 'Medu', 'Fedu', 'studytime', 'G1', 'G2', 'absences', 'famsize', 'Pstatus', 'Mjob', 'Fjob', 'reason', 'guardian']
+    categorical_columns = [ 'school', 'sex', 'age', 'address', 'Medu', 'Fedu', 'studytime', 'G1', 'G2', 'absences', 
+                           'famsize', 'Pstatus', 'Mjob', 'Fjob', 'reason', 'guardian', 'Dalc', 'Walc', 'activities_yes', 'failures', 'famrel']
     for column, encoder in zip(categorical_columns, encoders):
         # Ensure that the column exists in the DataFrame
         if column in df.columns:
@@ -50,6 +51,11 @@ def main():
     Fjob =  st.selectbox('Father job',[0, 1, 2, 3, 4])
     reason = st.selectbox('Reason', [0, 1, 2, 3])
     guardian = st.selectbox('Guardian', [0, 1, 2])
+    Dalc = st.selectbox('Dalc', [0, 1])
+    Walc = st.selectbox('Walc', [0, 1])
+    activities_yes = st.selectbox('activities_yes', [0, 1])
+    failures = st.selectbox('failures', [0, 1])
+    famrel = st.selectbox('famrel', [0, 1])
     # ... (similar input fields for other features)
     # ... (similar input fields for other features)
 
@@ -73,6 +79,11 @@ def main():
             'Fjob': [Fjob],
             'reason': [reason], 
             'guardian': [guardian],
+            'Dalc': [Dalc],
+            'Walc': [Walc],
+            'activities_yes': [activities_yes],
+            'failures': [failures],
+            'famrel': [famrel],
             # ... (similar entries for other features)
         })
 

@@ -6,19 +6,16 @@ import pickle
 # Load model and encoders
 def load_model_and_encoders():
     with open('model_student_data.pkl', 'rb') as file:
-        model, encoders = pickle.load(file)
+        model, *encoders = pickle.load(file)
     return model, encoders
-
 
 # Categorical Data Encoding
 def encode_categorical_data(df, encoders):
-    categorical_columns = ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob', 'reason', 'guardian']
+    categorical_columns = ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob',
+                            'reason', 'guardian']
     for column, encoder in zip(categorical_columns, encoders):
         df[column] = encoder.transform(df[column])
     return df
-
-
-
 
 # Predict ScoreG3
 def predict_scoreG3(model, user_input, encoders):
@@ -26,13 +23,12 @@ def predict_scoreG3(model, user_input, encoders):
     prediction = model.predict(user_input)
     return prediction[0]
 
-
 # Main Streamlit App
 def main():
     st.title('Student Performance Form')
 
     # Load model and encoders
-    model, encoders = load_model_and_encoders()
+    model, *encoders = load_model_and_encoders()
 
     # Create a form for students to fill out
     st.subheader('Student Information')
@@ -46,6 +42,7 @@ def main():
     G1 = st.slider('Grade 1 (G1)', 0, 100, 50)
     G2 = st.slider('Grade 2 (G2)', 0, 100, 50)
     absences = st.slider('Number of Absences', 0, 50, 25)
+    # ... (similar input fields for other features)
     # ... (similar input fields for other features)
 
     # Form submission
@@ -64,9 +61,6 @@ def main():
             'absences': [absences]
             # ... (similar entries for other features)
         })
-
-        user_input[['Medu', 'Fedu', 'studytime', 'G1', 'G2', 'absences']] = user_input[['Medu', 'Fedu', 'studytime', 'G1', 'G2', 'absences']].apply(pd.to_numeric)
-
 
         # Predict scpredict_scoreG3
         prediction = predict_scoreG3(model, user_input, encoders)

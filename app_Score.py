@@ -10,10 +10,17 @@ def load_model_and_encoders():
     return model, encoders
 
 # Categorical Data Encoding
+def encode_categorical_data(df, encoders):
+    categorical_columns = ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob',
+                            'reason', 'guardian']
+    for column, encoder in zip(categorical_columns, encoders):
+        df[column] = encoder.transform(df[column])
+    return df
 
 
 # Predict ScoreG3
 def predict_scoreG3(model, user_input, encoders):
+    user_input = encode_categorical_data(user_input, encoders)
     prediction = model.predict(user_input)
     return prediction[0]
 
@@ -36,6 +43,12 @@ def main():
     G1 = st.slider('คะแนนครั้งที่ 1', 0, 100, 50)
     G2 = st.slider('คะแนนครั้งที่ 2', 0, 100, 50)
     absences = st.slider('Number of Absences', 0, 50, 25)
+    famsize = st.selectbox('Family size', ['GT3', 'LE3'])
+    Pstatus = st.selectbox('Pstatus', ['A', 'T'])
+    Mjob = st.selectbox('Mother job', ['at_home', 'health', 'other', 'services', 'teacher'])
+    Fjob =  st.selectbox('Father job', ['at_home', 'health', 'other', 'services', 'teacher'])
+    reason = st.selectbox('Father job', ['course', 'home', 'other', 'reputation'])
+    guardian = st.selectbox('Father job', ['father', 'mother', 'other'])
     # ... (similar input fields for other features)
     # ... (similar input fields for other features)
 
@@ -52,7 +65,13 @@ def main():
             'studytime': [studytime],
             'G1': [G1],
             'G2': [G2],
-            'absences': [absences]
+            'absences': [absences],
+            'famsize': [famsize], 
+            'Pstatus': [Pstatus], 
+            'Mjob': [Mjob], 
+            'Fjob': [Fjob],
+            'reason': [reason], 
+            'guardian': [guardian],
             # ... (similar entries for other features)
         })
 

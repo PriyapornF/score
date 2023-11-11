@@ -11,13 +11,13 @@ def load_model_and_encoders():
 
 # Categorical Data Encoding
 def encode_categorical_data(df, encoders):
-    categorical_columns = ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob',
-                            'reason', 'guardian']
+    categorical_columns = ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob', 'reason', 'guardian']
     for column, encoder in zip(categorical_columns, encoders):
-        print(f"Before encoding {column}: {df[column]}")
+        print(f"Before encoding {column}: {df[column].dtype}, {df[column].unique()}")
         df[column] = encoder.fit_transform(df[column])
-        print(f"After encoding {column}: {df[column]}")
+        print(f"After encoding {column}: {df[column].dtype}, {df[column].unique()}")
     return df
+
 
 
 # Predict ScoreG3
@@ -63,6 +63,9 @@ def main():
             'absences': [absences]
             # ... (similar entries for other features)
         })
+
+        user_input[['Medu', 'Fedu', 'studytime', 'G1', 'G2', 'absences']] = user_input[['Medu', 'Fedu', 'studytime', 'G1', 'G2', 'absences']].apply(pd.to_numeric)
+
 
         # Predict scpredict_scoreG3
         prediction = predict_scoreG3(model, user_input, encoders)

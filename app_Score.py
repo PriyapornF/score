@@ -14,8 +14,11 @@ def encode_categorical_data(df, encoders):
     categorical_columns = ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob',
                             'reason', 'guardian']
     for column, encoder in zip(categorical_columns, encoders):
-        df[column] = encoder.fit_transform(df[column])  # Use fit_transform instead of transform
+        print(f"Before encoding {column}: {df[column]}")
+        df[column] = encoder.fit_transform(df[column])
+        print(f"After encoding {column}: {df[column]}")
     return df
+
 
 # Predict ScoreG3
 def predict_scoreG3(model, user_input, encoders):

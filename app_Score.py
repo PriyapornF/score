@@ -12,7 +12,8 @@ def load_model_and_encoders():
 # Categorical Data Encoding
 def encode_categorical_data(df, encoders):
     categorical_columns = [ 'school', 'sex', 'age', 'address', 'Medu', 'Fedu', 'studytime', 'G1', 'G2', 'absences', 
-                           'famsize', 'Pstatus', 'Mjob', 'Fjob', 'reason', 'guardian', 'Dalc', 'Walc', 'activities_yes', 'failures', 'famrel']
+                           'famsize', 'Pstatus', 'Mjob', 'Fjob', 'reason', 'guardian', 'Dalc', 'Walc', 
+                           'activities_yes', 'failures', 'famrel', 'famsup_yes', 'freetime', 'goout', 'health', 'higher_yes']
     for column, encoder in zip(categorical_columns, encoders):
         # Ensure that the column exists in the DataFrame
         if column in df.columns:
@@ -56,6 +57,11 @@ def main():
     activities_yes = st.selectbox('activities_yes', [0, 1])
     failures = st.selectbox('failures', [0, 1])
     famrel = st.selectbox('famrel', [0, 1])
+    famsup_yes = st.selectbox('famsup_yes', [0, 1])
+    freetime = st.selectbox('freetime', [0, 1])
+    goout = st.selectbox('goout', [0, 1])
+    health = st.selectbox('health', [0, 1])
+    higher_yes = st.selectbox('higher_yes', [0, 1])
     # ... (similar input fields for other features)
     # ... (similar input fields for other features)
 
@@ -84,6 +90,11 @@ def main():
             'activities_yes': [activities_yes],
             'failures': [failures],
             'famrel': [famrel],
+            'famsup_yes': [famsup_yes], 
+            'freetime': [freetime], 
+            'goout': [goout], 
+            'health': [health], 
+            'higher_yes': [higher_yes]
             # ... (similar entries for other features)
         })
 

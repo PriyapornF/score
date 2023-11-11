@@ -10,16 +10,10 @@ def load_model_and_encoders():
     return model, encoders
 
 # Categorical Data Encoding
-# def encode_categorical_data(df, encoders):
-#     categorical_columns = ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob',
-#                             'reason', 'guardian']
-#     for column, encoder in zip(categorical_columns, encoders):
-#         df[column] = encoder.transform(df[column])
-#     return df
+
 
 # Predict ScoreG3
 def predict_scoreG3(model, user_input, encoders):
-    # user_input = encode_categorical_data(user_input, encoders)
     prediction = model.predict(user_input)
     return prediction[0]
 

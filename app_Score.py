@@ -14,7 +14,9 @@ def encode_categorical_data(df, encoders):
     categorical_columns = ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob',
                             'reason', 'guardian']
     for column, encoder in zip(categorical_columns, encoders):
-        df[column] = encoder.transform(df[column])
+        # Ensure that the column exists in the DataFrame
+        if column in df.columns:
+            df[column] = encoder.transform(df[column])
     return df
 
 

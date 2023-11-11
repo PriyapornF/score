@@ -11,8 +11,7 @@ def load_model_and_encoders():
 
 # Categorical Data Encoding
 def encode_categorical_data(df, encoders):
-    categorical_columns = ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob',
-                            'reason', 'guardian']
+    categorical_columns = [ 'school', 'sex', 'age', 'address', 'Medu', 'Fedu', 'studytime', 'G1', 'G2', 'absences', 'famsize', 'Pstatus', 'Mjob', 'Fjob', 'reason', 'guardian']
     for column, encoder in zip(categorical_columns, encoders):
         # Ensure that the column exists in the DataFrame
         if column in df.columns:

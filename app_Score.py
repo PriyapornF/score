@@ -50,7 +50,12 @@ def main():
             'sex': [sex],
             'age': [age],
             'address': [address],
-            'famsize': [famsize],
+            'Medu': [Medu],
+            'Fedu': [Fedu],
+            'studytime': [studytime],
+            'G1': [G1],
+            'G2': [G2],
+            'absences': [absences]
             # ... (similar entries for other features)
         })
 

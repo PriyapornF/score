@@ -39,7 +39,6 @@ def main():
     sex = st.selectbox('Sex', ['F', 'M'])
     age = st.slider('Age', 15, 22, 18)
     address = st.selectbox('Address', ['U', 'R'])
-    famsize = st.selectbox('Family Size', ['LE3', 'GT3'])
     Medu = st.slider('Mother Education (Medu)', 1, 4, 1)
     Fedu = st.slider('Father Education (Fedu)', 1, 4, 1)
     studytime = st.slider('Study Time (hours)', 0, 50, 25)

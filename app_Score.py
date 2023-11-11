@@ -5,7 +5,7 @@ import pickle
 
 # Load model and encoders
 def load_model_and_encoders():
-    with open('best_model.pkl', 'rb') as file:
+    with open('model_student_data', 'rb') as file:
         model, *encoders = pickle.load(file)
     return model, encoders
 

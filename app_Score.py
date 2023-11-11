@@ -40,6 +40,12 @@ def main():
     age = st.slider('Age', 15, 22, 18)
     address = st.selectbox('Address', ['U', 'R'])
     famsize = st.selectbox('Family Size', ['LE3', 'GT3'])
+    Medu = st.slider('Mother Education (Medu)', 1, 4, 1)
+    Fedu = st.slider('Father Education (Fedu)', 1, 4, 1)
+    studytime = st.slider('Study Time (hours)', 0, 50, 25)
+    G1 = st.slider('Grade 1 (G1)', 0, 100, 50)
+    G2 = st.slider('Grade 2 (G2)', 0, 100, 50)
+    absences = st.slider('Number of Absences', 0, 50, 25)
     # ... (similar input fields for other features)
 
     # Form submission
